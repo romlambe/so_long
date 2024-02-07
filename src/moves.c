@@ -1,20 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   colors.h                                           :+:      :+:    :+:   */
+/*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: romlambe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/19 16:10:52 by romlambe          #+#    #+#             */
-/*   Updated: 2024/01/19 16:15:56 by romlambe         ###   ########.fr       */
+/*   Created: 2024/02/06 15:42:35 by romlambe          #+#    #+#             */
+/*   Updated: 2024/02/06 15:53:48 by romlambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COLORS_H
-# define COLORS_H
+#include "../include/so_long.h"
 
-// color codes
-# define DEFAULT "\033[0;39m"
-# define RED "\033[0;91m"
+void	hook_switch(int keycode, t_data *game)
+{
+	if (keycode == KEY_ESC)
+	{
+		mlx_destroy_window(game->mlx, game->win);
+		game->win = NULL;
+	}
+	if (keycode == KEY_Z)
 
-#endif
+	if (keycode == KEY_Q)
+
+	if (keycode == KEY_S)
+
+	if (keycode == KEY_D)
+		;
+}

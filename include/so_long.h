@@ -6,7 +6,7 @@
 /*   By: romlambe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:12:33 by romlambe          #+#    #+#             */
-/*   Updated: 2024/02/06 15:21:50 by romlambe         ###   ########.fr       */
+/*   Updated: 2024/02/06 15:55:22 by romlambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,30 @@
 
 // # include "colors.h"
 
+# define KEY_ESC 27
+# define KEY_Z 122
+# define KEY_Q 113
+# define KEY_S 115
+# define KEY_D 100
+
 typedef	struct s_data
 {
-	void *mlx_ptr;
-	void *win_ptr;
+	void *mlx;
+	void *win;
 	char **map;
 	int	x;
 	int	y;
 	int width;
 	int height;
-	int color;
+
+	t_data player;
+	t_data collectible;
+	t_data exit;
 	// pour compter mes entités
 	int count_p;
 	int count_c;
 	int count_e;
+	int step_count;
 	int i;
 	int j;
 }	t_data;
