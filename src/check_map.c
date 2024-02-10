@@ -6,7 +6,7 @@
 /*   By: romlambe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 17:28:18 by romlambe          #+#    #+#             */
-/*   Updated: 2024/02/06 17:29:19 by romlambe         ###   ########.fr       */
+/*   Updated: 2024/02/10 15:36:03 by romlambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	check_wall(t_data *game)
 	if (!(game->map))
 		return (1);
 	if (ft_strcmp(game->map[0], 1) != 0)
-		error_param();
+		return (1);
 	i = 1;
 	while(game->map[i - 1])
 	{
@@ -31,7 +31,7 @@ int	check_wall(t_data *game)
 		if (start == 1 && end == 1)
 			i++;
 		else
-			error_param();
+			return (1);
 	}
 	if (ft_strcmp(game->map[i + 1], 1)!= 0)
 		error_param();
@@ -55,17 +55,18 @@ int	check_square_map(t_data *game)
 }
 
 // si la map est correctement remplie
-
-int	is_available_entity(char c)
+// changer la ft car faire la boucle pour la map entiere
+int	is_available_entity(t_data *game)
 {
 	char	charset[6];
 	int		i;
+	int		j;
 
 	i = 0;
 	charset[6] = "0, 1, P, E, C";
 	while (charset[i])
 	{
-		if (c != charset[i])
+		if (game->map[i][j] != charset[i])
 			error_param();
 		i++;
 	}
@@ -73,27 +74,4 @@ int	is_available_entity(char c)
 }
 
 
-//compter et regarder si j'ai le bon nb de chaque entitée
-int is_good(t_data *game)
-{
-	game->i = 0;
-	game->j = 0;
 
-	while(game->map[game->i])
-	{
-		while(game->map[game->i][game->j])
-		{
-			if (game->map[game->i][game->j] == 'E')
-				game->count_e += 1;
-			if (game->map[game->i][game->j] == 'P')
-				game->count_p += 1;
-			if (game->map[game->i][game->j] == 'C')
-				game->count_c += 1;
-			game->j++;
-		}
-		game->i++;
-	}
-	if (game->count_e != 1 && game->count_p != 1 && game->count_c < 1)
-		error_param();
-	return (0);
-}

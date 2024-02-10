@@ -6,7 +6,7 @@
 #    By: romlambe <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/11 11:40:32 by romlambe          #+#    #+#              #
-#    Updated: 2024/01/11 11:55:06 by romlambe         ###   ########.fr        #
+#    Updated: 2024/02/08 15:37:42 by romlambe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,13 @@ MLX_PATH = minilibx-linux/libmlx.a
 MLX_FILE = libmlx.a
 MLX_FLAGS = -L/usr/X11R6/lib -lX11 -lXext
 
+GET_NEXT_LINE = gnl/get_next_line.c gnl/get_next_line_utils.c
+LIBFT = libft/libft.a
+
 SRC = src/main.c
+
 OBJ = $(SRC:.c=.o)
+GET_NEXT_LINE_OBJ = $(GET_NEXT_LINE:.c=.o)
 RM = rm - f
 
 .SUFFIXES: .c .o

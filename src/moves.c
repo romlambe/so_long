@@ -6,7 +6,7 @@
 /*   By: romlambe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 15:42:35 by romlambe          #+#    #+#             */
-/*   Updated: 2024/02/06 15:53:48 by romlambe         ###   ########.fr       */
+/*   Updated: 2024/02/09 16:38:25 by romlambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,9 @@ void	hook_switch(int keycode, t_data *game)
 
 	if (keycode == KEY_D)
 		;
+}
+
+void	move_up(t_data *game)
+{
+	
 }
