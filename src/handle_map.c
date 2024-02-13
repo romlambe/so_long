@@ -6,7 +6,7 @@
 /*   By: romlambe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 15:41:19 by romlambe          #+#    #+#             */
-/*   Updated: 2024/02/13 12:07:01 by romlambe         ###   ########.fr       */
+/*   Updated: 2024/02/13 13:54:39 by romlambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,21 +45,7 @@ void	alloc_map(t_data *game)
 	if (game->map == NULL)
 		return ;
 	game->map[game->height] = NULL;
-	// while (i <= game->height)
-	// {
-	// 	game->map[i] = (char *)malloc(sizeof(char) * (game->width) + 1);
-	// 	if (game->map[i] == NULL)
-	// 	{
-	// 		while(j < i)
-	// 		{
-	// 			free(game->map[j]);
-	// 			j++;
-	// 		}
-	// 		free(game->map);
-	// 		return ;
-	// 	}
-	// 	i++;
-	// }
+
 }
 
 void	fill_map(t_data *game, const char *file)
