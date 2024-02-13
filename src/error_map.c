@@ -6,7 +6,7 @@
 /*   By: romlambe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 15:50:26 by romlambe          #+#    #+#             */
-/*   Updated: 2024/02/06 17:29:21 by romlambe         ###   ########.fr       */
+/*   Updated: 2024/02/12 13:51:09 by romlambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,11 @@ int error_param()
 }
 
 // check si c'est un .ber
-int	check_param(int ac, char **av)
-{
-	if (ac != 2)
-		return (error_param());
-	if (ft_strrncmp(av[1], ".ber", 4) != 0)
-		return (error_param());
-}
+// int	check_param(int ac, char **av)
+// {
+// 	if (ac != 2)
+// 		return (error_param());
+// 	if (ft_strrncmp(av[1], ".ber", 4) != 0)
+// 		return (error_param());
+// }
 

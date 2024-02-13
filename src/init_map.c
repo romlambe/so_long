@@ -6,7 +6,7 @@
 /*   By: romlambe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 15:34:05 by romlambe          #+#    #+#             */
-/*   Updated: 2024/02/10 15:37:57 by romlambe         ###   ########.fr       */
+/*   Updated: 2024/02/13 11:55:15 by romlambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,15 @@ void	init_map(t_data *game)
 		j = 0;
 		while(game->map[i][j])
 		{
-			if (game->map[i][j] = 'P')
+			if (game->map[i][j] == 'P')
 				mlx_put_image_to_window(game->mlx, game->win, &game->player.player, 16 * j, 16 *i);
-			else if (game->map[i][j] = 'C')
+			else if (game->map[i][j] == 'C')
 				mlx_put_image_to_window(game->mlx, game->win, game->collectible, j * 16, i * 16);
-			else if (game->map[i][j] = 'E')
+			else if (game->map[i][j] == 'E')
 				mlx_put_image_to_window(game->mlx, game->win, game->exit, j * 16, i * 16);
-			else if (game->map[i][j] = '0')
+			else if (game->map[i][j] == '0')
 				mlx_put_image_to_window(game->mlx, game->win, game->floor, j * 16, i * 16);
-			else if (game->map[i][j] = '1')
+			else if (game->map[i][j] == '1')
 				mlx_put_image_to_window(game->mlx, game->win, game->wall, j * 16, i * 16);
 			j++;
 		}
@@ -55,5 +55,22 @@ void	init_map(t_data *game)
 
 void	create_window(t_data *game)
 {
-	
+	game->mlx = mlx_init();
+	if (game->mlx == NULL)
+		return ;
+	game->win = mlx_new_window(game->mlx, WINDOWS_HEIGHT, WINDOWS_WIDTH, "So_long");
+	if (game->win == NULL)
+	{
+		free(game->mlx);
+		return ;
+	}
+	init_image(game);
+	init_map(game);
+	mlx_hook(game->win, 2, 1<<0, &hook_switch, game);
+	mlx_loop(game->mlx);
+	if (game->mlx)
+	{
+		mlx_destroy_display(game->mlx);
+		free(game->mlx);
+	}
 }

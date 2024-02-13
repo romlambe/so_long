@@ -6,7 +6,7 @@
 /*   By: romlambe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:12:33 by romlambe          #+#    #+#             */
-/*   Updated: 2024/02/10 15:29:44 by romlambe         ###   ########.fr       */
+/*   Updated: 2024/02/13 12:12:09 by romlambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,10 @@ typedef	struct s_data
 	int width;
 	int height;
 	char *ber;
+	char *string;
 
-	void *collectible;
-	void *exit;
+	// void *collectible;
+	// void *exit;
 	// pour compter mes entités
 	int count_p;
 	int count_c;
@@ -74,22 +75,51 @@ typedef	struct s_data
 	void	*collectible;
 	void	*wall;
 	void	*exit;
-
-
 }	t_data;
 
 
 int main(int ac, char **av);
 
+//chech_mapcle
+
 int	check_wall(t_data *game);
 int	check_square_map(t_data *game);
 int	is_available_entity(t_data *game);
-int is_good(t_data *game);
+
+//init_map
+
+void	init_image(t_data *game);
+void	init_map(t_data *game);
+void	create_window(t_data *game);
+
+//check_count;
+
+int	check_player(t_data *game);
+int	check_collectible(t_data *game);
+int	check_exit(t_data *game);
+
+//handle map
+
+void	read_map(t_data *game, const char *file);
+void	alloc_map(t_data *game);
+void	fill_map(t_data *game, const char *file);
+
 
 int	ft_strcmp(char *s1, char c);
 int	ft_strrncmp(char *s1, char *s2, int size);
 int error_param();
-int	check_param(int ac, char **av);
+// int	check_param(int ac, char **av);
+
+void	hook_switch(int keycode, t_data *game);
+int		check_all_error(t_data *game);
+
+
+//moves
+
+void	move_left(t_data *game);
+void	move_right(t_data *game);
+void	move_up(t_data *game);
+void	move_down(t_data *game);
 
 #ifdef __linux__
 # include <X11/keysym.h>

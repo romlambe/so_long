@@ -6,7 +6,7 @@
 #    By: romlambe <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/11 11:40:32 by romlambe          #+#    #+#              #
-#    Updated: 2024/02/08 15:37:42 by romlambe         ###   ########.fr        #
+#    Updated: 2024/02/12 16:08:01 by romlambe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,22 +18,26 @@ MLX_FILE = libmlx.a
 MLX_FLAGS = -L/usr/X11R6/lib -lX11 -lXext
 
 GET_NEXT_LINE = gnl/get_next_line.c gnl/get_next_line_utils.c
+LIBFT_PATH = libft
 LIBFT = libft/libft.a
+PRINTF = printf/ft_printf.c printf/ft_printf_utils.c
 
-SRC = src/main.c
+SRC = $(wildcard src/*.c)
 
 OBJ = $(SRC:.c=.o)
 GET_NEXT_LINE_OBJ = $(GET_NEXT_LINE:.c=.o)
+PRINTF_OBJ = $(PRINTF:.c=.o)
 RM = rm - f
 
 .SUFFIXES: .c .o
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) $(GET_NEXT_LINE_OBJ) $(PRINTF_OBJ) $(LIBFT)
 	make -C minilibx-linux/
-	$(CC) $(CFLAGS) $(OBJ) $(MLX_PATH) $(MLX_FLAGS) -o $(NAME) -I include/
+	make -C libft/
+	$(CC) $(CFLAGS) $(OBJ) $(GET_NEXT_LINE) $(PRINTF_OBJ) $(MLX_PATH) $(MLX_FLAGS) $(LIBFT) -o $(NAME) -I include/
 
 %.o: %.c
-	$(CC) $(FLAGS) -c $< -o $@ -I include/
+	$(CC) $(FLAGS) -c $< -o $@ -I include/cl
 
 all: $(NAME)
 

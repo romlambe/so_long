@@ -6,7 +6,7 @@
 /*   By: romlambe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 16:26:57 by romlambe          #+#    #+#             */
-/*   Updated: 2024/02/09 16:27:41 by romlambe         ###   ########.fr       */
+/*   Updated: 2024/02/12 16:12:23 by romlambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	check_player(t_data *game)
 	}
 	if (game->count_p != 1)
 	{
-		ft_printf("Error\n");
+		ft_printf("Error player\n");
 		return (1);
 	}
 	return 0;
@@ -61,7 +61,7 @@ int	check_collectible(t_data *game)
 	}
 	if (game->count_c < 1)
 	{
-		ft_printf("Error\n");
+		ft_printf("Error collectible\n");
 		return (1);
 	}
 	return (0);
@@ -88,7 +88,7 @@ int	check_exit(t_data *game)
 	}
 	if (game->count_e != 1)
 	{
-		ft_printf("Error\n");
+		ft_printf("Error exit\n");
 		return (1);
 	}
 	return (0);

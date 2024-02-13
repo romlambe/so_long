@@ -6,7 +6,7 @@
 /*   By: romlambe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 15:41:19 by romlambe          #+#    #+#             */
-/*   Updated: 2024/02/10 15:41:59 by romlambe         ###   ########.fr       */
+/*   Updated: 2024/02/13 12:07:01 by romlambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	read_map(t_data *game, const char *file)
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 	{
-		ft_printf("Error\n");
+		ft_printf("Error map\n");
 		return ;
 	}
 	while (line = get_next_line(fd))
@@ -41,24 +41,25 @@ void	alloc_map(t_data *game)
 
 	i = 0;
 	j = 0;
-	game->map = (char **)malloc(sizeof(char *) * game->height);
+	game->map = (char **)malloc(sizeof(char *) * (game->height + 1));
 	if (game->map == NULL)
 		return ;
-	while (i <= game->height)
-	{
-		game->map[i] = (char *)malloc(sizeof(char) * (game->width) + 1);
-		if (game->map[i] == NULL)
-		{
-			while(j < i)
-			{
-				free(game->map[j]);
-				j++;
-			}
-			free(game->map);
-			return ;
-		}
-		i++;
-	}
+	game->map[game->height] = NULL;
+	// while (i <= game->height)
+	// {
+	// 	game->map[i] = (char *)malloc(sizeof(char) * (game->width) + 1);
+	// 	if (game->map[i] == NULL)
+	// 	{
+	// 		while(j < i)
+	// 		{
+	// 			free(game->map[j]);
+	// 			j++;
+	// 		}
+	// 		free(game->map);
+	// 		return ;
+	// 	}
+	// 	i++;
+	// }
 }
 
 void	fill_map(t_data *game, const char *file)
@@ -71,7 +72,7 @@ void	fill_map(t_data *game, const char *file)
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 	{
-		ft_printf("Error\n");
+		ft_printf("Error fill map\n");
 		return ;
 	}
 	while (line = get_next_line(fd))

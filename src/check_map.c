@@ -6,7 +6,7 @@
 /*   By: romlambe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 17:28:18 by romlambe          #+#    #+#             */
-/*   Updated: 2024/02/10 15:36:03 by romlambe         ###   ########.fr       */
+/*   Updated: 2024/02/12 14:56:53 by romlambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,12 @@ int	check_square_map(t_data *game)
 // changer la ft car faire la boucle pour la map entiere
 int	is_available_entity(t_data *game)
 {
-	char	charset[6];
+	char	charset[] = {'0', '1', 'P', 'E', 'C'} ;
 	int		i;
 	int		j;
 
 	i = 0;
-	charset[6] = "0, 1, P, E, C";
+	// charset[0] = ;
 	while (charset[i])
 	{
 		if (game->map[i][j] != charset[i])
