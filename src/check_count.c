@@ -6,7 +6,7 @@
 /*   By: romlambe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 16:26:57 by romlambe          #+#    #+#             */
-/*   Updated: 2024/02/12 16:12:23 by romlambe         ###   ########.fr       */
+/*   Updated: 2024/02/26 18:47:59 by romlambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,13 @@ int	check_player(t_data *game)
 	i = 0;
 	while(i < game->height)
 	{
+		j = 0;
 		while(j < game->width)
 		{
 			if (game->map[i][j] == 'P')
 			{
-				game->player.pos_x = j;
-				game->player.pos_y = i;
+				game->player.p_pos.x = j;
+				game->player.p_pos.y = i;
 				game->count_p++;
 			}
 			j++;

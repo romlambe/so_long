@@ -6,7 +6,7 @@
 /*   By: romlambe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:12:33 by romlambe          #+#    #+#             */
-/*   Updated: 2024/02/13 12:12:09 by romlambe         ###   ########.fr       */
+/*   Updated: 2024/02/26 18:20:40 by romlambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,8 @@ typedef struct	s_axe
 
 typedef struct	s_player
 {
-	int	pos_x;
-	int	pos_y;
-	void *player;
+	t_axe	p_pos;
+	void	*player;
 }				t_player;
 
 typedef	struct s_data
@@ -113,11 +112,14 @@ int		check_all_error(t_data *game);
 
 
 //moves
+void	move_up(t_player *player, t_data *game);
+void	move_left(t_player *player, t_data *game);
+void	move_right(t_player *player, t_data *game);
+void	move_down(t_player *player, t_data *game);
 
-void	move_left(t_data *game);
-void	move_right(t_data *game);
-void	move_up(t_data *game);
-void	move_down(t_data *game);
+//free
+void	free_sprites(t_data *game);
+int	free_everything(t_data *game);
 
 #ifdef __linux__
 # include <X11/keysym.h>

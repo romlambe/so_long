@@ -6,7 +6,7 @@
 /*   By: romlambe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 15:34:05 by romlambe          #+#    #+#             */
-/*   Updated: 2024/02/13 11:55:15 by romlambe         ###   ########.fr       */
+/*   Updated: 2024/02/26 15:09:23 by romlambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void	init_image(t_data *game)
 	int	size;
 
 	size = 32;
-	game->floor = mlx_xpm_file_to_image(game->mlx, "./xpm/New-Project.xpm", &size, &size);
+	game->floor = mlx_xpm_file_to_image(game->mlx, "./xpm/grass.xpm", &size, &size);
 	game->wall = mlx_xpm_file_to_image(game->mlx, "./xpm/cobble.xpm", &size, &size);
-	game->collectible = mlx_xpm_file_to_image(game->mlx, "./xpm/diamond_on_grass.xpm", &size, &size);
-	game->exit = mlx_xpm_file_to_image(game->mlx, "./xpm/portail.xpm", &size, &size);
+	game->collectible = mlx_xpm_file_to_image(game->mlx, "./xpm/collectible.xpm", &size, &size);
+	game->exit = mlx_xpm_file_to_image(game->mlx, "./xpm/exit.xpm", &size, &size);
 	game->player.player = mlx_xpm_file_to_image(game->mlx, "./xpm/steve.xpm", &size, &size);
 
 
