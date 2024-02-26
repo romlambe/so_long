@@ -6,7 +6,7 @@
 /*   By: romlambe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 16:26:57 by romlambe          #+#    #+#             */
-/*   Updated: 2024/02/26 18:47:59 by romlambe         ###   ########.fr       */
+/*   Updated: 2024/02/26 22:44:47 by romlambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	check_player(t_data *game)
 {
 	int	i;
 	int	j;
+	game->count_p = 0;
 
 	i = 0;
 	while(i < game->height)
@@ -32,7 +33,7 @@ int	check_player(t_data *game)
 			j++;
 		}
 		i++;
-	}
+	}	
 	if (game->count_p != 1)
 	{
 		ft_printf("Error player\n");
@@ -46,6 +47,7 @@ int	check_collectible(t_data *game)
 	int	i;
 	int	j;
 
+	game->count_c = 0;
 	i = 0;
 	while (i < game->height)
 	{
@@ -73,6 +75,7 @@ int	check_exit(t_data *game)
 	int	i;
 	int	j;
 
+	game->count_e = 0;
 	i = 0;
 	while (i < game->height)
 	{

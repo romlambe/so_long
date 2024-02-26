@@ -6,7 +6,7 @@
 /*   By: romlambe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:41:34 by romlambe          #+#    #+#             */
-/*   Updated: 2024/02/26 18:52:11 by romlambe         ###   ########.fr       */
+/*   Updated: 2024/02/26 22:47:00 by romlambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@ int	check_all_error(t_data *game)
 {
 	int	error;
 
+	read_map(game, game->ber);
+	alloc_map(game);
+	fill_map(game, game->ber);
 	// error = check_wall(game);
 	// if (error == 1)
 	// 	error_param();
@@ -29,12 +32,12 @@ int	check_all_error(t_data *game)
 	error = check_player(game);
 	if (error == 1)
 		error_param();
-	// error = check_collectible(game);
-	// if (error == 1)
-	// 	error_param();
-	// error = check_exit(game);
-	// if (error == 1)
-	// 	error_param();
+	error = check_collectible(game);
+	if (error == 1)
+		error_param();
+	error = check_exit(game);
+	if (error == 1)
+		error_param();
 	// // gerer les parametres de la fonction
 	return (0);
 }
@@ -56,20 +59,18 @@ int main(int ac, char **av)
 	game.win = NULL;
 	init_image(&game);
 
-	// if (check_all_error(&game) == 1)
-	// {
-	// 	mlx_destroy_window(game.mlx, game.win);
-	// 	game.mlx = NULL;
-	// 	return (0);
-	// }
+	if (check_all_error(&game) == 1)
+	{
+		mlx_destroy_window(game.mlx, game.win);
+		game.mlx = NULL;
+		return (0);
+	}
 	create_window(&game);
 	check_player(&game);
 	mlx_loop(game.mlx);
 	return 0;
 }
 
-
-//mettre les ft init maps dans les erreurs pour initialiser la taille witdh et height
-//avoir la position du joueur pour ensuite le faire se deplacer
 //gerer les erreurs: nom de la map, wall, carre, si les chars sont les bons
-//cheker les counts de joueurs, collectibles, exit
+//flood fill pour savoir si la map est ok
+//si map vide ou non faisable tout free

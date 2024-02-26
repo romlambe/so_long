@@ -6,7 +6,7 @@
 /*   By: romlambe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 15:34:05 by romlambe          #+#    #+#             */
-/*   Updated: 2024/02/26 15:09:23 by romlambe         ###   ########.fr       */
+/*   Updated: 2024/02/26 22:45:47 by romlambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,6 @@ void	init_map(t_data *game, int i, int j)
 
 void	create_window(t_data *game)
 {
-	read_map(game, game->ber);
-	alloc_map(game);
-	fill_map(game, game->ber);
 	if (game->mlx == NULL)
 		return ;
 	game->win = mlx_new_window(game->mlx, game->width * 32, game->height * 32, "So_long");
@@ -71,6 +68,6 @@ void	create_window(t_data *game)
 	}
 		init_map(game, 0, 0);
 	mlx_hook(game->win, 2, 1<<0, &hook_switch, game);
-	// mlx_hook(game->win, 17, (1L<<0), &free_everything, game);
+	mlx_hook(game->win, 17, (1L<<0), &free_everything, game);
 	mlx_loop(game->mlx);
 }
