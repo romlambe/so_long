@@ -27,13 +27,13 @@ int	check_wall(t_data *game)
 	while(game->map[i - 1])
 	{
 		start = game->map[i][0];
-		end = game->map[i][ft_strlen(game->map[i])];
+		end = game->map[i][ft_strlen(game->map[i - 1])];
 		if (start == 1 && end == 1)
 			i++;
 		else
 			return (1);
 	}
-	if (ft_strcmp(game->map[i + 1], 1)!= 0)
+	if (ft_strcmp(game->map[i + 1], '1')!= 0)
 		error_param();
 	return (0);
 }
@@ -56,22 +56,22 @@ int	check_square_map(t_data *game)
 
 // si la map est correctement remplie
 // changer la ft car faire la boucle pour la map entiere
-int	is_available_entity(t_data *game)
-{
-	char	charset[] = {'0', '1', 'P', 'E', 'C'} ;
-	int		i;
-	int		j;
+// int	is_available_entity(t_data *game)
+// {
+// 	char	charset[] = {'0', '1', 'P', 'E', 'C'} ;
+// 	int		i;
+// 	int		j;
 
-	i = 0;
-	// charset[0] = ;
-	while (charset[i])
-	{
-		if (game->map[i][j] != charset[i])
-			error_param();
-		i++;
-	}
-	return (0);
-}
+// 	i = 0;
+// 	// charset[0] = ;
+// 	while (charset[i])
+// 	{
+// 		if (game->map[i][j] != charset[i])
+// 			error_param();
+// 		i++;
+// 	}
+// 	return (0);
+// }
 
 
 

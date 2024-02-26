@@ -59,9 +59,7 @@ typedef	struct s_data
 	int height;
 	char *ber;
 	char *string;
-
-	// void *collectible;
-	// void *exit;
+	void	*end;
 	// pour compter mes entités
 	int count_p;
 	int count_c;
@@ -89,7 +87,7 @@ int	is_available_entity(t_data *game);
 //init_map
 
 void	init_image(t_data *game);
-void	init_map(t_data *game);
+void	init_map(t_data *game, int i, int j);
 void	create_window(t_data *game);
 
 //check_count;
@@ -110,7 +108,7 @@ int	ft_strrncmp(char *s1, char *s2, int size);
 int error_param();
 // int	check_param(int ac, char **av);
 
-void	hook_switch(int keycode, t_data *game);
+int	hook_switch(int keycode, t_data *game);
 int		check_all_error(t_data *game);
 
 

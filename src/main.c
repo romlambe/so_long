@@ -17,17 +17,14 @@ int	check_all_error(t_data *game)
 {
 	int	error;
 
-	read_map(game, game->ber);
-	alloc_map(game);
-	fill_map(game, game->ber);
 	error = check_wall(game);
 	if (error == 1)
 		error_param();
 	error = check_square_map(game);
 	if (error == 1)
 		error_param();
-	error = is_available_entity(game);
-	if (error == 1)
+	// error = is_available_entity(game);
+	// if (error == 1)
 		error_param();
 	error = check_player(game);
 	if (error == 1)
@@ -54,12 +51,16 @@ int main(int ac, char **av)
 		error_param();
 		return (1);
 	}
-	game.ber = (char *)malloc(ft_strlen(av[1]) * sizeof(char));
+	game.ber = ft_strdup(av[1]);
 	if (game.ber == NULL)
 		return (1);
-	game.ber = ft_strdup(av[1]);
-	game.mlx = NULL;
-	if (check_all_error(&game) == 0)
-		create_window(&game);
+	game.mlx = mlx_init();
+	
+	game.win = NULL;
+	init_image(&game);
+	
+	// if (check_all_error(&game) == 0)
+	create_window(&game);
+	mlx_loop(game.mlx);
 	return 0;
 }
