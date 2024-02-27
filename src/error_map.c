@@ -6,26 +6,20 @@
 /*   By: romlambe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 15:50:26 by romlambe          #+#    #+#             */
-/*   Updated: 2024/02/12 13:51:09 by romlambe         ###   ########.fr       */
+/*   Updated: 2024/02/27 16:41:35 by romlambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-int	ft_strcmp(char *s1, char c)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	if (!s1)
-		return (0);
-	while(s1[i])
-	{
-		if (s1[i] != c)
-			return (1);
+	while (s1[i] == s2[i] && s1[i])
 		i++;
-	}
-	return (0);
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
 
 int	ft_strrncmp(char *s1, char *s2, int size)
@@ -42,10 +36,22 @@ int	ft_strrncmp(char *s1, char *s2, int size)
 	}
 	return (s1 - s2);
 }
-int error_param()
+
+int	check_name_error(t_data *game)
 {
-	ft_printf("Error\n ");
-	return (1);
+	int	start_pos;
+	int	size_ber;
+	int	size_string;
+
+	size_ber = ft_strlen(".ber");
+	size_string = ft_strlen(game->ber);
+	start_pos = size_string - size_ber;
+	if (start_pos <= 0 || ft_strcmp(game->ber + start_pos, ".ber") != 0)
+	{
+		ft_printf("Error\n");
+		return (1);
+	}
+	return (0);
 }
 
 // check si c'est un .ber

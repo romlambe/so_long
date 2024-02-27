@@ -6,7 +6,7 @@
 /*   By: romlambe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 16:26:57 by romlambe          #+#    #+#             */
-/*   Updated: 2024/02/26 22:44:47 by romlambe         ###   ########.fr       */
+/*   Updated: 2024/02/27 15:44:37 by romlambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,9 @@ int	check_player(t_data *game)
 			j++;
 		}
 		i++;
-	}	
-	if (game->count_p != 1)
-	{
-		ft_printf("Error player\n");
-		return (1);
 	}
+	if (game->count_p != 1)
+		return (ft_printf("Error\n"), 1);
 	return 0;
 }
 
@@ -55,18 +52,13 @@ int	check_collectible(t_data *game)
 		while (j < game->width)
 		{
 			if(game->map[i][j] == 'C')
-			{
 				game->count_c++;
-			}
 			j++;
 		}
 		i++;
 	}
 	if (game->count_c < 1)
-	{
-		ft_printf("Error collectible\n");
-		return (1);
-	}
+		return (ft_printf("Error\n"), 1);
 	return (0);
 }
 
@@ -83,17 +75,12 @@ int	check_exit(t_data *game)
 		while (j < game->width)
 		{
 			if (game->map[i][j] == 'E')
-			{
 				game->count_e++;
-			}
 			j++;
 		}
 		i++;
 	}
 	if (game->count_e != 1)
-	{
-		ft_printf("Error exit\n");
-		return (1);
-	}
+		return (ft_printf("Error\n"), 1);
 	return (0);
 }

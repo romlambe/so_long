@@ -6,7 +6,7 @@
 /*   By: romlambe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 15:41:19 by romlambe          #+#    #+#             */
-/*   Updated: 2024/02/26 15:10:36 by romlambe         ###   ########.fr       */
+/*   Updated: 2024/02/27 16:38:06 by romlambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,7 @@ void	read_map(t_data *game, const char *file)
 	game->height = 0;
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
-	{
-		ft_printf("Error map\n");
 		return ;
-	}
 	while (1)
 	{
 		line = get_next_line(fd);
@@ -60,10 +57,7 @@ void	fill_map(t_data *game, const char *file)
 	i = 0;
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
-	{
-		ft_printf("Error fill map\n");
 		return ;
-	}
 	while (1)
 	{
 		line = get_next_line(fd);

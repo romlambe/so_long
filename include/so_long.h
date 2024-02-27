@@ -6,7 +6,7 @@
 /*   By: romlambe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:12:33 by romlambe          #+#    #+#             */
-/*   Updated: 2024/02/26 18:20:40 by romlambe         ###   ########.fr       */
+/*   Updated: 2024/02/27 16:42:03 by romlambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ int main(int ac, char **av);
 
 //chech_mapcle
 
+int	check_name_error(t_data *game);
 int	check_wall(t_data *game);
 int	check_square_map(t_data *game);
 int	is_available_entity(t_data *game);
@@ -102,10 +103,9 @@ void	alloc_map(t_data *game);
 void	fill_map(t_data *game, const char *file);
 
 
-int	ft_strcmp(char *s1, char c);
+int	ft_strcmp(const char *s1, const char *s2);
 int	ft_strrncmp(char *s1, char *s2, int size);
-int error_param();
-// int	check_param(int ac, char **av);
+
 
 int	hook_switch(int keycode, t_data *game);
 int		check_all_error(t_data *game);
