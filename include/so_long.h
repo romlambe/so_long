@@ -6,7 +6,7 @@
 /*   By: romlambe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:12:33 by romlambe          #+#    #+#             */
-/*   Updated: 2024/02/27 16:42:03 by romlambe         ###   ########.fr       */
+/*   Updated: 2024/02/28 14:27:54 by romlambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,9 @@ typedef	struct s_data
 	int count_p;
 	int count_c;
 	int count_e;
+	//checker
+	int	check_exit;
+	int	check_collectible;
 	// compter le nb de pas
 	int step_count;
 	t_player player;
@@ -120,6 +123,11 @@ void	move_down(t_player *player, t_data *game);
 //free
 void	free_sprites(t_data *game);
 int	free_everything(t_data *game);
+
+//flood fill
+void	fill_path_map(t_data *game, t_player *player, const char *file);
+char	**fill_map_temp(t_data *game, const char *file);
+void	flood_fill(t_data *game, char **map, int x, int y);
 
 #ifdef __linux__
 # include <X11/keysym.h>

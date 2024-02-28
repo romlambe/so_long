@@ -6,7 +6,7 @@
 /*   By: romlambe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 15:50:26 by romlambe          #+#    #+#             */
-/*   Updated: 2024/02/27 16:41:35 by romlambe         ###   ########.fr       */
+/*   Updated: 2024/02/28 14:42:23 by romlambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,86 @@ int	check_name_error(t_data *game)
 	}
 	return (0);
 }
+
+char	**fill_map_temp(t_data *game, const char *file)
+{
+	char **map_temp;
+	int	fd;
+	char *line;
+	int	i;
+
+	i = 0;
+	line = NULL;
+	map_temp = (char **)malloc(sizeof(char *) * (game->height + 1));
+	if (map_temp == NULL)
+		return (ft_printf("Error\n"), NULL);
+	fd = open(file, O_RDONLY);
+	if (fd == -1)
+		return (ft_printf("Error\n"), NULL);
+	while (1)
+	{
+		line = get_next_line(fd);
+		if (line == NULL)
+			break;
+		map_temp[i] = ft_strdup(line);
+		free(line);
+		i++;
+	}
+	close(fd);
+	return (map_temp);
+}
+
+
+void fill_path_map(t_data *game, t_player *player, const char *file)
+{
+	int	i;
+	char **map_temp;
+
+	i = 0;
+	game->check_collectible = 0;
+	game->check_exit = 0;
+	map_temp = fill_map_temp(game, file);
+	printf("%d\n", game->count_c);
+	flood_fill(game, map_temp, player->p_pos.x, player->p_pos.y);
+	if (game->check_collectible != game->count_c || game->check_exit == 0)
+	{
+		ft_printf("check :%d\n", game->check_collectible);
+		ft_printf("check exit: %d\n", game->check_exit);
+		ft_printf("Error collectible ou exit\n");
+		while (map_temp[i++])
+			free (map_temp[i]);
+		free (map_temp);
+		free_everything(game);
+		exit (0);
+	}
+	while (map_temp[i++])
+		free (map_temp[i]);
+	free (map_temp);
+}
+void	flood_fill(t_data *game, char **map_temp, int x, int y)
+{
+	if (x <= 0 || y <= 0 || x > game->width || y > game->height)
+		return ;
+	if (map_temp[y][x] == '1' || map_temp[y][x] == 'X' ||
+		map_temp[y][x] == 'V' || map_temp[y][x] == 'E')
+	{
+		if (map_temp[y][x] == 'E')
+		{
+			game->check_exit = 1;
+			map_temp[y][x] = 'V';
+		}
+		return ;
+	}
+	if (map_temp[y][x] == 'C')
+		game->check_collectible++;
+	if (map_temp[y][x] != 'V')
+		map_temp[y][x] = 'X';
+	flood_fill(game, map_temp, x - 1, y);
+	flood_fill(game, map_temp, x + 1, y);
+	flood_fill(game, map_temp, x, y - 1);
+	flood_fill(game, map_temp, x, y + 1);
+}
+
 
 // check si c'est un .ber
 // int	check_param(int ac, char **av)

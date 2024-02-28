@@ -6,7 +6,7 @@
 /*   By: romlambe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:41:34 by romlambe          #+#    #+#             */
-/*   Updated: 2024/02/27 17:17:02 by romlambe         ###   ########.fr       */
+/*   Updated: 2024/02/28 14:30:26 by romlambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	check_all_error(t_data *game)
 	error = check_exit(game);
 	if (error == 1)
 		return (1);
+	fill_path_map(game, &game->player, game->ber);
 	return (0);
 }
 
