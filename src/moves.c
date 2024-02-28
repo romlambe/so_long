@@ -6,7 +6,7 @@
 /*   By: romlambe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 15:42:35 by romlambe          #+#    #+#             */
-/*   Updated: 2024/02/26 18:37:54 by romlambe         ###   ########.fr       */
+/*   Updated: 2024/02/28 16:08:59 by romlambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,20 @@ void	check_path(int x, int y, t_data *game, t_player *player)
 		player->p_pos.x = x;
 		player->p_pos.y = y;
 		mlx_put_image_to_window(game->mlx, game->win, player->player, player->p_pos.x * 32, player->p_pos.y* 32);
+		game->step_count++;
 	}
-	//ft pour string et nb de pas
+	print_step(x, y ,game);
+}
+
+void print_step(int x, int y, t_data *game)
+{
+	game->string = ft_itoa(game->step_count);
+	if (game->map[y][x] != 'E')
+	{
+		mlx_put_image_to_window(game->mlx, game->win, game->wall, 64, 0);
+		mlx_string_put(game->mlx, game->win, 0, 10, 0xFFFFFFFF, "nb de pas");
+		mlx_string_put(game->mlx, game->win, 66, 10, 0xFFFFFFFF, game->string);
+	}
 }
 
 void	move_up(t_player *player, t_data *game)

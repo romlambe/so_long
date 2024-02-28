@@ -6,7 +6,7 @@
 /*   By: romlambe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 15:50:26 by romlambe          #+#    #+#             */
-/*   Updated: 2024/02/28 14:42:23 by romlambe         ###   ########.fr       */
+/*   Updated: 2024/02/28 16:07:08 by romlambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,9 +96,7 @@ void fill_path_map(t_data *game, t_player *player, const char *file)
 	flood_fill(game, map_temp, player->p_pos.x, player->p_pos.y);
 	if (game->check_collectible != game->count_c || game->check_exit == 0)
 	{
-		ft_printf("check :%d\n", game->check_collectible);
-		ft_printf("check exit: %d\n", game->check_exit);
-		ft_printf("Error collectible ou exit\n");
+		ft_printf("Error\n");
 		while (map_temp[i++])
 			free (map_temp[i]);
 		free (map_temp);

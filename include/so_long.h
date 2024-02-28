@@ -6,7 +6,7 @@
 /*   By: romlambe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:12:33 by romlambe          #+#    #+#             */
-/*   Updated: 2024/02/28 14:27:54 by romlambe         ###   ########.fr       */
+/*   Updated: 2024/02/28 15:12:31 by romlambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,8 @@ int	free_everything(t_data *game);
 void	fill_path_map(t_data *game, t_player *player, const char *file);
 char	**fill_map_temp(t_data *game, const char *file);
 void	flood_fill(t_data *game, char **map, int x, int y);
+
+void print_step(int x, int y, t_data *game);
 
 #ifdef __linux__
 # include <X11/keysym.h>
