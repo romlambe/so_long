@@ -6,7 +6,7 @@
 /*   By: romlambe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:12:33 by romlambe          #+#    #+#             */
-/*   Updated: 2024/02/28 15:12:31 by romlambe         ###   ########.fr       */
+/*   Updated: 2024/02/28 17:48:39 by romlambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,12 +80,13 @@ typedef	struct s_data
 
 int main(int ac, char **av);
 
-//chech_mapcle
+//chech_map
 
 int	check_name_error(t_data *game);
 int	check_wall(t_data *game);
 int	check_square_map(t_data *game);
 int	is_available_entity(t_data *game);
+
 
 //init_map
 
@@ -101,6 +102,7 @@ int	check_exit(t_data *game);
 
 //handle map
 
+void	empty_map(t_data *game, const char *file);
 void	read_map(t_data *game, const char *file);
 void	alloc_map(t_data *game);
 void	fill_map(t_data *game, const char *file);
@@ -122,7 +124,7 @@ void	move_down(t_player *player, t_data *game);
 
 //free
 void	free_sprites(t_data *game);
-int	free_everything(t_data *game);
+int		free_everything(t_data *game);
 
 //flood fill
 void	fill_path_map(t_data *game, t_player *player, const char *file);

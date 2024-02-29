@@ -6,7 +6,7 @@
 /*   By: romlambe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 17:28:18 by romlambe          #+#    #+#             */
-/*   Updated: 2024/02/27 15:41:34 by romlambe         ###   ########.fr       */
+/*   Updated: 2024/02/28 17:28:41 by romlambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	is_available_entity(t_data *game)
 			if (game->map[i][j] != '0' && game->map[i][j] != '1'
 				&& game->map[i][j] != 'E' && game->map[i][j] != 'P'
 					&& game->map[i][j] != 'C')
-				return (ft_printf("Error"), 1);
+				return (ft_printf("Error\n"), 1);
 			j++;
 		}
 		i++;

@@ -6,7 +6,7 @@
 /*   By: romlambe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 15:50:26 by romlambe          #+#    #+#             */
-/*   Updated: 2024/02/28 16:07:08 by romlambe         ###   ########.fr       */
+/*   Updated: 2024/02/28 17:44:02 by romlambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,9 @@ char	**fill_map_temp(t_data *game, const char *file)
 	line = NULL;
 	map_temp = (char **)malloc(sizeof(char *) * (game->height + 1));
 	if (map_temp == NULL)
+	{
 		return (ft_printf("Error\n"), NULL);
+	}
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		return (ft_printf("Error\n"), NULL);
@@ -92,7 +94,6 @@ void fill_path_map(t_data *game, t_player *player, const char *file)
 	game->check_collectible = 0;
 	game->check_exit = 0;
 	map_temp = fill_map_temp(game, file);
-	printf("%d\n", game->count_c);
 	flood_fill(game, map_temp, player->p_pos.x, player->p_pos.y);
 	if (game->check_collectible != game->count_c || game->check_exit == 0)
 	{
@@ -130,6 +131,7 @@ void	flood_fill(t_data *game, char **map_temp, int x, int y)
 	flood_fill(game, map_temp, x, y - 1);
 	flood_fill(game, map_temp, x, y + 1);
 }
+
 
 
 // check si c'est un .ber

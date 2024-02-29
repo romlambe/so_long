@@ -6,11 +6,32 @@
 /*   By: romlambe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 15:41:19 by romlambe          #+#    #+#             */
-/*   Updated: 2024/02/27 16:38:06 by romlambe         ###   ########.fr       */
+/*   Updated: 2024/02/28 17:50:56 by romlambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+
+void	empty_map(t_data *game, const char *file)
+{
+	int		fd;
+	char	c;
+
+	fd = open(file, O_RDONLY);
+	if (fd == -1)
+	{
+		game->map = NULL;
+		ft_printf("Error\n");
+		free_everything(game);
+	}
+	if (read(fd, &c, 1) == 0)
+	{
+		game->map = NULL;
+		ft_printf("Error\n");
+		close(fd);
+		free_everything(game);
+	}
+}
 
 void	read_map(t_data *game, const char *file)
 {
@@ -19,6 +40,7 @@ void	read_map(t_data *game, const char *file)
 
 	game->width = 0;
 	game->height = 0;
+	empty_map(game, game->ber);
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		return ;
