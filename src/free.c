@@ -40,12 +40,12 @@ int	free_everything(t_data *game)
 	}
 	free_sprites(game);
 	free(game->ber);
-	if (game->win)
+	if (game->win != NULL)
 	{
 		mlx_destroy_window(game->mlx, game->win);
 		game->win = NULL;
 	}
-	if (game->mlx)
+	if (game->mlx != NULL)
 	{
 		mlx_destroy_display(game->mlx);
 		free(game->mlx);

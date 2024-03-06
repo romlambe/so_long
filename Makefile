@@ -20,7 +20,8 @@ MLX_FILE = libmlx.a
 MLX_FLAGS = -L/usr/X11R6/lib -lX11 -lXext
 
 
-SRC = $(wildcard src/*.c)
+SRC = src/check_count.c src/check_map.c src/error_map.c src/free.c \
+src/handle_map.c src/init_map.c src/main.c src/moves.c 
 GET_NEXT_LINE = gnl/get_next_line.c gnl/get_next_line_utils.c
 PRINTF = printf/ft_printf.c printf/ft_printf_utils.c
 LIBFT = libft/libft.a

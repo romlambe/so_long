@@ -56,6 +56,7 @@ int main(int ac, char **av)
 		return (1);
 	game.mlx = mlx_init();
 	game.win = NULL;
+	game.step_count = 0;
 	init_image(&game);
 	if (check_all_error(&game) == 1)
 		free_everything(&game);

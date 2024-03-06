@@ -17,9 +17,7 @@ int	hook_switch(int keycode, t_data *game)
 	if (keycode == KEY_ESC)
 		free_everything(game);
 	else if (keycode == KEY_Z || keycode == KEY_UP)
-	{
 		move_up(&game->player, game);
-	}
 	else if (keycode == KEY_Q || keycode == KEY_LEFT)
 		move_left(&game->player, game);
 	else if (keycode == KEY_S || keycode == KEY_DOWN)
@@ -53,6 +51,11 @@ void	check_path(int x, int y, t_data *game, t_player *player)
 		game->step_count++;
 	}
 	print_step(x, y ,game);
+	if (game->string)
+	{
+		free(game->string);
+		game->string = NULL;
+	}
 }
 
 void print_step(int x, int y, t_data *game)

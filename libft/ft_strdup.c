@@ -18,8 +18,10 @@ char	*ft_strdup(char const *str)
 	char	*dest;
 
 	i = 0;
-	dest = malloc(sizeof (char) * ft_strlen(str) + 1);
-	if (!dest)
+	if (str == NULL)
+		return (NULL);
+	dest = (char *)malloc(sizeof (char) * (ft_strlen(str) + 1));
+	if (dest == NULL)
 		return (NULL);
 	while (str[i])
 	{
@@ -28,6 +30,6 @@ char	*ft_strdup(char const *str)
 			dest[i] = '\0';
 		i++;
 	}
-	dest[i] = 0;
+	dest[i] = '\0';
 	return (dest);
 }

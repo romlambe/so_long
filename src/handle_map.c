@@ -52,6 +52,7 @@ void	read_map(t_data *game, const char *file)
 		if (game->height == 0)
 			game->width = ft_strlen(line) - 1;
 		game->height++;
+		free(line);
 	}
 	close(fd);
 }

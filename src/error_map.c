@@ -65,9 +65,8 @@ char	**fill_map_temp(t_data *game, const char *file)
 	line = NULL;
 	map_temp = (char **)malloc(sizeof(char *) * (game->height + 1));
 	if (map_temp == NULL)
-	{
 		return (ft_printf("Error\n"), NULL);
-	}
+	map_temp[game->height] = NULL;
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		return (ft_printf("Error\n"), NULL);
@@ -97,14 +96,17 @@ void fill_path_map(t_data *game, t_player *player, const char *file)
 	flood_fill(game, map_temp, player->p_pos.x, player->p_pos.y);
 	if (game->check_collectible != game->count_c || game->check_exit == 0)
 	{
-		ft_printf("Error\n");
-		while (map_temp[i++])
+		ft_printf("Error collectible or exit\n");
+		while (map_temp[i])
+		{
 			free (map_temp[i]);
+			i++;
+		}
 		free (map_temp);
 		free_everything(game);
 		exit (0);
 	}
-	while (map_temp[i++])
+	while (map_temp[++i])
 		free (map_temp[i]);
 	free (map_temp);
 }
