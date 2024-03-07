@@ -6,7 +6,7 @@
 /*   By: romlambe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 18:11:57 by romlambe          #+#    #+#             */
-/*   Updated: 2024/02/26 18:22:27 by romlambe         ###   ########.fr       */
+/*   Updated: 2024/03/07 12:06:39 by romlambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	free_sprites(t_data *game)
 		mlx_destroy_image(game->mlx, game->collectible);
 	if (game->player.player)
 		mlx_destroy_image(game->mlx, game->player.player);
-
 }
 
 int	free_everything(t_data *game)
@@ -34,7 +33,7 @@ int	free_everything(t_data *game)
 	i = -1;
 	if (game->map != NULL)
 	{
-		while(game->map[++i])
+		while (game->map[++i])
 			free(game->map[i]);
 		free(game->map);
 	}
@@ -53,5 +52,3 @@ int	free_everything(t_data *game)
 	}
 	return (0);
 }
-
-

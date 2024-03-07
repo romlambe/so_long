@@ -6,7 +6,7 @@
 /*   By: romlambe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 16:26:57 by romlambe          #+#    #+#             */
-/*   Updated: 2024/02/27 15:44:37 by romlambe         ###   ########.fr       */
+/*   Updated: 2024/03/07 12:14:38 by romlambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ int	check_player(t_data *game)
 {
 	int	i;
 	int	j;
-	game->count_p = 0;
 
+	game->count_p = 0;
 	i = 0;
-	while(i < game->height)
+	while (i < game->height)
 	{
 		j = 0;
-		while(j < game->width)
+		while (j < game->width)
 		{
 			if (game->map[i][j] == 'P')
 			{
@@ -36,7 +36,7 @@ int	check_player(t_data *game)
 	}
 	if (game->count_p != 1)
 		return (ft_printf("Error\n"), 1);
-	return 0;
+	return (0);
 }
 
 int	check_collectible(t_data *game)
@@ -51,7 +51,7 @@ int	check_collectible(t_data *game)
 		j = 0;
 		while (j < game->width)
 		{
-			if(game->map[i][j] == 'C')
+			if (game->map[i][j] == 'C')
 				game->count_c++;
 			j++;
 		}

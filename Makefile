@@ -6,7 +6,7 @@
 #    By: romlambe <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/11 11:40:32 by romlambe          #+#    #+#              #
-#    Updated: 2024/02/13 14:34:12 by romlambe         ###   ########.fr        #
+#    Updated: 2024/03/07 12:08:51 by romlambe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ MLX_FLAGS = -L/usr/X11R6/lib -lX11 -lXext
 
 
 SRC = src/check_count.c src/check_map.c src/error_map.c src/free.c \
-src/handle_map.c src/init_map.c src/main.c src/moves.c 
+src/handle_map.c src/init_map.c src/main.c src/moves.c src/manage_moves.c \
+src/util.c
 GET_NEXT_LINE = gnl/get_next_line.c gnl/get_next_line_utils.c
 PRINTF = printf/ft_printf.c printf/ft_printf_utils.c
 LIBFT = libft/libft.a
